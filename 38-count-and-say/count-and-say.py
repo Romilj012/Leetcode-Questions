@@ -1,6 +1,6 @@
 class Solution:
     def countAndSay(self, n: int) -> str:
-        #recurssion
+        #recurrsion method
         if n == 1:
             return "1"
         prev = self.countAndSay(n-1)
@@ -13,6 +13,7 @@ class Solution:
             else:
                 count +=1
         return result
+        
         # s = "11"
         # if n ==1 : 
         #     return "1"
