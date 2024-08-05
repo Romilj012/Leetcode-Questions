@@ -11,7 +11,6 @@
 #         else:
 #             return ""
 
-# from typing import List
 
 class Solution:
     def kthDistinct(self, arr: List[str], k: int) -> str:
