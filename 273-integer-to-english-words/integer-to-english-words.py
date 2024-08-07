@@ -27,7 +27,7 @@ class Solution:
                 result = wordify(num % 1000) + thousands[i] + ' ' + result
             num //= 1000
             i += 1
-
+            
         return result.strip()
 
             
