@@ -3,34 +3,33 @@ class Solution:
         if num == 0:
             return "Zero"
         
-        bigString = ["Thousand", "Million", "Billion"]
-        result = self.numberToWordsHelper(num % 1000)
-        num //= 1000
-        
-        for i in range(len(bigString)):
-            if num > 0 and num % 1000 > 0:
-                result = self.numberToWordsHelper(num % 1000) + bigString[i] + " " + result
-            num //= 1000
-        
-        return result.strip()
+        below_20 = {
+            0: 'Zero', 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 
+            10: 'Ten', 11: 'Eleven', 12: 'Twelve', 13: 'Thirteen', 14: 'Fourteen', 15: 'Fifteen', 16: 'Sixteen', 
+            17: 'Seventeen', 18: 'Eighteen', 19: 'Nineteen'
+        }
+        tens = {
+            2: 'Twenty', 3: 'Thirty', 4: 'Forty', 5: 'Fifty', 6: 'Sixty', 7: 'Seventy', 8: 'Eighty', 9: 'Ninety'
+        }
+        thousands = ['', 'Thousand', 'Million', 'Billion']
 
-    def numberToWordsHelper(self, num: int) -> str:
-        digitString = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-        teenString = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
-        tenString = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
-        
-        result = ""
-        if num > 99:
-            result += digitString[num // 100] + " Hundred "
-        
-        num %= 100
-        if num < 20 and num > 9:
-            result += teenString[num - 10] + " "
-        else:
-            if num >= 20:
-                result += tenString[num // 10] + " "
-            num %= 10
-            if num > 0:
-                result += digitString[num] + " "
-        
-        return result
+        def wordify(num):
+            if num == 0:
+                return ''
+            elif num < 20:
+                return below_20[num] + ' '
+            elif num < 100:
+                return tens[num // 10] + ' ' + wordify(num % 10)
+            else:
+                return below_20[num // 100] + ' Hundred ' + wordify(num % 100)
+
+        result = ''
+        i = 0
+
+        while num > 0:
+            if num % 1000 != 0:
+                result = wordify(num % 1000) + thousands[i] + ' ' + result
+            num //= 1000
+            i += 1
+
+        return result.strip()
