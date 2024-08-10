@@ -15,7 +15,7 @@ class MedianFinder:
         else:
             mid1 = self.li[n // 2 - 1]
             mid2 = self.li[n // 2]
-            return (mid1 + mid2) / 2.0
+            return (mid1 + mid2) / 2
 
                 
             
