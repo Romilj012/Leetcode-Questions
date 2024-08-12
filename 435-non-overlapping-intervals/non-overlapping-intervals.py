@@ -6,7 +6,6 @@ class Solution:
         intervals.sort(key=lambda x: x[1])
         count = 0
         end = float('-inf')
-        print(end)
         for interval in intervals:
             if interval[0] >= end:
                 end = interval[1]
