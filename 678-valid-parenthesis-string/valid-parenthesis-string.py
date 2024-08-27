@@ -16,7 +16,7 @@ class Solution:
                     return False
         while check and collectStar:
             if check[-1] > collectStar[-1]:
-                return False  # '(' cannot be matched with '*' appearing before it
+                return False
             check.pop()
             collectStar.pop()
         return False if check else True
