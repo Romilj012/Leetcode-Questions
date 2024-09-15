@@ -1,26 +1,26 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid:
-            return 0
-        visited = set()
         rows, cols = len(grid), len(grid[0])
-        noOfIslands = 0
-        def bfs(r, c):
-            que = collections.deque()
-            visited.add((r,c))
-            que.append((r,c))
-            while que:
-                row, col = que.popleft()
-                directions =[[1,0], [-1,0], [0,-1],[0,1]]
-                for drow, dcol in directions:
-                    r, c = row + drow, col + dcol
-                    if r in range(rows) and c in range(cols) and grid[r][c] == "1" and (r, c) not in visited:
-                        que.append((r,c))
-                        visited.add((r, c))
+        visit = set()
+        count = 0
+        def dfs(r, c):
+
+            if (r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0' or (r, c) in visit):
+                return 
+
+            visit.add((r,c))
+            dfs(r+1, c)
+            dfs(r, c+1)
+            dfs(r, c-1) 
+            dfs(r-1, c)
+
+        
         for r in range(rows):
             for c in range(cols):
-                if grid[r][c] == "1" and (r, c) not in visited:
-                    bfs(r,c)
-                    noOfIslands +=1 
-        return noOfIslands
-        
+                if grid[r][c] == '1' and (r, c) not in visit:
+                    dfs(r, c)
+                    count += 1
+        return count
+
+
+            
