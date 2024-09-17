@@ -1,6 +1,5 @@
 class Solution:
-    def orangesRotting(self, grid: List[List[int]]) -> int: 
-        #dfs cannot work here that'ws why we are implementing bfs
+    def orangesRotting(self, grid: List[List[int]]) -> int:
         minute, freshOrange = 0, 0
         row, col = len(grid), len(grid[0])
         que = deque()
