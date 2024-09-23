@@ -3,21 +3,6 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-# class Solution:
-#     def reorderList(self, head: Optional[ListNode]) -> None:
-#         """
-#         Do not return anything, modify head in-place instead.
-#         """
-#         curr, prev = head, None
-#         prev = curr
-#         print(prev)
-#         while curr.next:
-#             curr = curr.next
-#         while prev:
-#             nxt = prev.next    
-#             prev.next = curr
-#             prev.next.next = nxt
-#             prev = prev.next
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
