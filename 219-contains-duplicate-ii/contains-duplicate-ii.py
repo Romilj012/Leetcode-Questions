@@ -5,6 +5,6 @@ class Solution:
             if num in num_indices:
                 if i - num_indices[num] <= k:
                     return True
-            num_indices[num] = i  # Update the index of the current number
+            num_indices[num] = i 
         
         return False
