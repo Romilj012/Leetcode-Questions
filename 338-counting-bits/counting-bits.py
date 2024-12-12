@@ -1,16 +1,7 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        li = [0]
-        def countBit(i):
-            c = 0
-            while i:
-                if i&1:
-                    c+=1
-                i = i>>1
-            return c
-        for i in range(1,n+1):
-            a = countBit(i)
-            li.append(a)
-        return li
-
-        
+        ans = [0]
+        for num in range(1,n+1):
+            ones = lambda num: bin(num).count('1')
+            ans.append(ones(num))
+        return ans
