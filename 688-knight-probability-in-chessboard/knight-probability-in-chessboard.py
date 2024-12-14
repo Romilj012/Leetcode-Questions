@@ -1,7 +1,7 @@
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
         directions = [[2,1],[-2,1],[1,2],[-1,2],[-1,-2],[1,-2],[2,-1],[-2,-1]]
-        visited = defaultdict(list)
+        visited = defaultdict(int)
         def dp(row, col, moves):
             if (row,col,moves) in visited:
                 return visited[(row,col,moves)]
