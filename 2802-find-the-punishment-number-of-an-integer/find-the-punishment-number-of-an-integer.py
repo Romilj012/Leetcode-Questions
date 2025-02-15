@@ -5,7 +5,7 @@ class Solution:
             if i==len(string) and curr == target:
                 return True
             for j in range(i, len(string)):
-                string[i:j+1]
+                # string[i:j+1]
                 if partition(j+1,curr + int(string[i:j+1]),target, string):
                     return True 
             return False
